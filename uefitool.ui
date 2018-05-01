@@ -180,7 +180,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>31</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -225,8 +225,6 @@
      </property>
      <addaction name="actionExtract"/>
      <addaction name="separator"/>
-     <addaction name="actionDoNotRebuild"/>
-     <addaction name="separator"/>
      <addaction name="actionReplace"/>
     </widget>
     <widget class="QMenu" name="menuPaddingActions">
@@ -245,7 +243,6 @@
      <addaction name="actionExtractBody"/>
      <addaction name="separator"/>
      <addaction name="actionRebuild"/>
-     <addaction name="actionDoNotRebuild"/>
      <addaction name="separator"/>
      <addaction name="actionInsertInto"/>
      <addaction name="separator"/>
@@ -260,7 +257,6 @@
      <addaction name="actionExtractBody"/>
      <addaction name="separator"/>
      <addaction name="actionRebuild"/>
-     <addaction name="actionDoNotRebuild"/>
      <addaction name="separator"/>
      <addaction name="actionInsertInto"/>
      <addaction name="actionInsertBefore"/>
@@ -279,7 +275,6 @@
      <addaction name="actionExtractBody"/>
      <addaction name="separator"/>
      <addaction name="actionRebuild"/>
-     <addaction name="actionDoNotRebuild"/>
      <addaction name="separator"/>
      <addaction name="actionInsertInto"/>
      <addaction name="actionInsertBefore"/>
@@ -289,6 +284,7 @@
      <addaction name="actionReplaceBody"/>
      <addaction name="separator"/>
      <addaction name="actionRemove"/>
+     <addaction name="separator"/>
     </widget>
     <widget class="QMenu" name="menuMessages">
      <property name="title">
@@ -538,17 +534,6 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+O</string>
-   </property>
-  </action>
-  <action name="actionDoNotRebuild">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Do not rebuild</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Shift+Space</string>
    </property>
   </action>
  </widget>

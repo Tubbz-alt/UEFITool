@@ -17,7 +17,7 @@
 UEFITool::UEFITool(QWidget *parent) :
 QMainWindow(parent),
 ui(new Ui::UEFITool),
-version(tr("0.23.0"))
+version(tr("0.22.4"))
 {
     clipboard = QApplication::clipboard();
 
@@ -43,7 +43,6 @@ version(tr("0.23.0"))
     connect(ui->actionReplaceBody, SIGNAL(triggered()), this, SLOT(replaceBody()));
     connect(ui->actionRemove, SIGNAL(triggered()), this, SLOT(remove()));
     connect(ui->actionRebuild, SIGNAL(triggered()), this, SLOT(rebuild()));
-	connect(ui->actionDoNotRebuild, SIGNAL(triggered()), this, SLOT(doNotRebuild()));
     connect(ui->actionMessagesCopy, SIGNAL(triggered()), this, SLOT(copyMessage()));
     connect(ui->actionMessagesCopyAll, SIGNAL(triggered()), this, SLOT(copyAllMessages()));
     connect(ui->actionMessagesClear, SIGNAL(triggered()), this, SLOT(clearMessages()));
@@ -147,7 +146,6 @@ void UEFITool::populateUi(const QModelIndex &current)
     // Enable actions
     ui->actionExtract->setDisabled(model->hasEmptyHeader(current) && model->hasEmptyBody(current));
     ui->actionRebuild->setEnabled(type == Types::Volume || type == Types::File || type == Types::Section);
-	ui->actionDoNotRebuild->setEnabled(type== Types::Region || type == Types::Volume || type == Types::File || type == Types::Section);
     ui->actionExtractBody->setDisabled(model->hasEmptyBody(current));
     ui->actionRemove->setEnabled(type == Types::Volume || type == Types::File || type == Types::Section);
     ui->actionInsertInto->setEnabled((type == Types::Volume && subtype != Subtypes::UnknownVolume) ||
@@ -220,18 +218,6 @@ void UEFITool::rebuild()
 
     if (result == ERR_SUCCESS)
         ui->actionSaveImageFile->setEnabled(true);
-}
-
-void UEFITool::doNotRebuild()
-{
-	QModelIndex index = ui->structureTreeView->selectionModel()->currentIndex();
-	if (!index.isValid())
-		return;
-
-	UINT8 result = ffsEngine->doNotRebuild(index);
-
-	if (result == ERR_SUCCESS)
-		ui->actionSaveImageFile->setEnabled(true);
 }
 
 void UEFITool::remove()

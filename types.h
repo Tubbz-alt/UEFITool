@@ -26,8 +26,7 @@ namespace Actions
         Replace,
         Remove,
         Rebuild,
-        Rebase,
-		DoNotRebuild
+        Rebase
     };
 }
 
